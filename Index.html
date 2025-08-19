@@ -1,0 +1,239 @@
+# <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bouncing Apple Enrollment Data</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f5f9ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            overflow: hidden;
+        }
+        
+        .apple-container {
+            position: relative;
+            width: 320px;
+            height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.8s ease-out;
+        }
+        
+        .apple-shape {
+            width: 240px;
+            height: 260px;
+            background: linear-gradient(145deg, #1a5cb8, #4b90ff);
+            border-radius: 65% 65% 55% 55% / 65% 65% 45% 45%;
+            box-shadow: 
+                0 12px 25px rgba(37, 115, 230, 0.3),
+                inset 0 -10px 15px rgba(37, 115, 230, 0.5);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 25px;
+            box-sizing: border-box;
+            color: white;
+            text-align: center;
+            transform-origin: bottom center;
+            animation: 
+                bounce 2.5s infinite cubic-bezier(0.28, 0.84, 0.42, 1),
+                float 6s ease-in-out infinite;
+        }
+        
+        .apple-shape::before {
+            content: '';
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 12px;
+            height: 20px;
+            background-color: #0a3a7a;
+            border-radius: 8px;
+            z-index: 2;
+            animation: stemBounce 2.5s infinite cubic-bezier(0.28, 0.84, 0.42, 1);
+        }
+        
+        .apple-shape::after {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 35px;
+            height: 5px;
+            background-color: #cce0ff;
+            border-radius: 3px;
+            z-index: 1;
+        }
+        
+        .apple-data {
+            background-color: rgba(255, 255, 255, 0.15);
+            border-radius: 15px;
+            padding: 18px;
+            margin-top: 10px;
+            backdrop-filter: blur(5px);
+            width: 90%;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transform-origin: top center;
+            animation: dataBounce 2.5s infinite cubic-bezier(0.28, 0.84, 0.42, 1);
+        }
+        
+        .apple-leaf {
+            position: absolute;
+            top: -50px;
+            left: 50%;
+            width: 45px;
+            height: 35px;
+            background-color: #84b5ff;
+            border-radius: 60% 0 60% 0;
+            transform: rotate(-20deg);
+            box-shadow: 2px -2px 8px rgba(0, 0, 0, 0.1);
+            z-index: 3;
+            animation: 
+                leafWave 2s ease-in-out infinite alternate,
+                leafBounce 2.5s infinite cubic-bezier(0.28, 0.84, 0.42, 1);
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: scale(1, 1) translateY(0); }
+            10% { transform: scale(1.05, 0.95) translateY(0); }
+            30% { transform: scale(0.95, 1.05) translateY(-20px); }
+            50% { transform: scale(1.03, 0.97) translateY(5px); }
+            57% { transform: scale(1, 1) translateY(0); }
+        }
+        
+        @keyframes stemBounce {
+            0%, 100% { transform: translateX(-50%) scaleY(1); }
+            30% { transform: translateX(-50%) scaleY(0.7); }
+            50% { transform: translateX(-50%) scaleY(1.1); }
+        }
+        
+        @keyframes leafBounce {
+            0%, 100% { top: -50px; }
+            30% { top: -40px; }
+            50% { top: -52px; }
+        }
+        
+        @keyframes dataBounce {
+            0%, 100% { transform: scale(1); }
+            30% { transform: scale(1.05); }
+            50% { transform: scale(0.98); }
+        }
+        
+        @keyframes leafWave {
+            0% { transform: rotate(-20deg); }
+            100% { transform: rotate(-25deg); }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(2deg); }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .title {
+            font-weight: 600;
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: #e6f0ff;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            animation: titleBounce 2.5s infinite cubic-bezier(0.28, 0.84, 0.42, 1);
+        }
+        
+        @keyframes titleBounce {
+            0%, 100% { transform: translateY(0); }
+            30% { transform: translateY(-3px); }
+            50% { transform: translateY(1px); }
+        }
+        
+        .subtitle {
+            font-size: 14px;
+            margin-bottom: 15px;
+            color: #c4dbff;
+        }
+        
+        .growth-item {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px 0;
+            font-size: 15px;
+            align-items: baseline;
+        }
+        
+        .year {
+            color: #e6f0ff;
+            flex: 1;
+        }
+        
+        .percentage {
+            font-weight: 600;
+            min-width: 60px;
+            text-align: right;
+        }
+        
+        .year-2021 .percentage { color: #a8ceff; }
+        .year-2022 .percentage { color: #7eb6ff; }
+        .year-2023 .percentage { color: #4b90ff; }
+        .year-2024 .percentage { color: #2673e6; }
+        .year-2025 .percentage { color: #1a5cb8; }
+        
+        .projection {
+            font-size: 12px;
+            color: #c4dbff;
+            margin-left: 5px;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="apple-container">
+        <div class="apple-leaf"></div>
+        <div class="apple-shape">
+            <div class="title">Enrollment Growth</div>
+            <div class="subtitle">Provider Requests</div>
+            <div class="apple-data">
+                <div class="growth-item year-2021">
+                    <span class="year">2021-2022</span>
+                    <span class="percentage">+50%</span>
+                </div>
+                <div class="growth-item year-2022">
+                    <span class="year">2022-2023</span>
+                    <span class="percentage">+16%</span>
+                </div>
+                <div class="growth-item year-2023">
+                    <span class="year">2023-2024</span>
+                    <span class="percentage">+23%</span>
+                </div>
+                <div class="growth-item year-2024">
+                    <span class="year">2024-2025</span>
+                    <span class="percentage">+23%</span>
+                    <span class="projection">(Projected)</span>
+                </div>
+                <div class="growth-item year-2025">
+                    <span class="year">2025-2026</span>
+                    <span class="percentage">+16%</span>
+                    <span class="projection">(Projected)</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
