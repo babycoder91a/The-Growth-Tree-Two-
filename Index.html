@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bouncing Apple Enrollment Data</title>
+    <title>Interactive Enrollment Apple</title>
     <style>
+        /* Main styles */
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
         
         body {
@@ -16,221 +17,208 @@
             min-height: 100vh;
             margin: 0;
             padding: 20px;
-            overflow: hidden;
         }
-        
+
+        /* Apple container */
         .apple-container {
             position: relative;
-            width: 320px;
-            height: 400px;
+            width: 300px;
+            height: 380px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            animation: fadeIn 0.8s ease-out;
         }
-        
+
+        /* Apple shape */
         .apple-shape {
-            width: 240px;
-            height: 260px;
-            background: linear-gradient(145deg, #1a5cb8, #4b90ff);
-            border-radius: 65% 65% 55% 55% / 65% 65% 45% 45%;
+            width: 220px;
+            height: 240px;
+            background: linear-gradient(145deg, #1976d2, #64b5f6);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
             box-shadow: 
-                0 12px 25px rgba(37, 115, 230, 0.3),
-                inset 0 -10px 15px rgba(37, 115, 230, 0.5);
+                0 10px 20px rgba(25, 118, 210, 0.2),
+                inset 0 -8px 12px rgba(25, 118, 210, 0.4);
             position: relative;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 25px;
-            box-sizing: border-box;
+            padding: 20px;
             color: white;
             text-align: center;
-            transform-origin: bottom center;
+            transform-origin: center bottom;
             animation: 
-                bounce 2.5s infinite cubic-bezier(0.28, 0.84, 0.42, 1),
+                bounce 2.5s ease infinite,
                 float 6s ease-in-out infinite;
         }
-        
+
+        /* Apple details */
         .apple-shape::before {
             content: '';
             position: absolute;
-            top: -25px;
+            top: -20px;
             left: 50%;
             transform: translateX(-50%);
-            width: 12px;
-            height: 20px;
-            background-color: #0a3a7a;
-            border-radius: 8px;
-            z-index: 2;
-            animation: stemBounce 2.5s infinite cubic-bezier(0.28, 0.84, 0.42, 1);
+            width: 10px;
+            height: 15px;
+            background-color: #0d47a1;
+            border-radius: 5px;
+            animation: stemBounce 2.5s ease infinite;
         }
-        
+
         .apple-shape::after {
             content: '';
             position: absolute;
-            top: -10px;
+            top: -8px;
             left: 50%;
             transform: translateX(-50%);
-            width: 35px;
-            height: 5px;
-            background-color: #cce0ff;
-            border-radius: 3px;
-            z-index: 1;
+            width: 30px;
+            height: 4px;
+            background-color: #bbdefb;
+            border-radius: 2px;
         }
-        
+
+        /* Apple data display */
         .apple-data {
             background-color: rgba(255, 255, 255, 0.15);
-            border-radius: 15px;
-            padding: 18px;
+            border-radius: 12px;
+            padding: 15px;
             margin-top: 10px;
-            backdrop-filter: blur(5px);
-            width: 90%;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            transform-origin: top center;
-            animation: dataBounce 2.5s infinite cubic-bezier(0.28, 0.84, 0.42, 1);
-        }
-        
-        .apple-leaf {
-            position: absolute;
-            top: -50px;
-            left: 50%;
-            width: 45px;
-            height: 35px;
-            background-color: #84b5ff;
-            border-radius: 60% 0 60% 0;
-            transform: rotate(-20deg);
-            box-shadow: 2px -2px 8px rgba(0, 0, 0, 0.1);
-            z-index: 3;
-            animation: 
-                leafWave 2s ease-in-out infinite alternate,
-                leafBounce 2.5s infinite cubic-bezier(0.28, 0.84, 0.42, 1);
-        }
-        
-        @keyframes bounce {
-            0%, 100% { transform: scale(1, 1) translateY(0); }
-            10% { transform: scale(1.05, 0.95) translateY(0); }
-            30% { transform: scale(0.95, 1.05) translateY(-20px); }
-            50% { transform: scale(1.03, 0.97) translateY(5px); }
-            57% { transform: scale(1, 1) translateY(0); }
-        }
-        
-        @keyframes stemBounce {
-            0%, 100% { transform: translateX(-50%) scaleY(1); }
-            30% { transform: translateX(-50%) scaleY(0.7); }
-            50% { transform: translateX(-50%) scaleY(1.1); }
-        }
-        
-        @keyframes leafBounce {
-            0%, 100% { top: -50px; }
-            30% { top: -40px; }
-            50% { top: -52px; }
-        }
-        
-        @keyframes dataBounce {
-            0%, 100% { transform: scale(1); }
-            30% { transform: scale(1.05); }
-            50% { transform: scale(0.98); }
-        }
-        
-        @keyframes leafWave {
-            0% { transform: rotate(-20deg); }
-            100% { transform: rotate(-25deg); }
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-15px) rotate(2deg); }
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: scale(0.95); }
-            to { opacity: 1; transform: scale(1); }
+            backdrop-filter: blur(4px);
+            width: 85%;
+            animation: dataPulse 2.5s ease infinite;
         }
 
         .title {
             font-weight: 600;
-            font-size: 22px;
-            margin-bottom: 15px;
-            color: #e6f0ff;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            animation: titleBounce 2.5s infinite cubic-bezier(0.28, 0.84, 0.42, 1);
+            font-size: 18px;
+            margin-bottom: 12px;
+            color: #e3f2fd;
+            animation: textBounce 2.5s ease infinite;
         }
-        
-        @keyframes titleBounce {
+
+        .subtitle {
+            font-size: 13px;
+            margin-bottom: 12px;
+            color: #bbdefb;
+        }
+
+        .data-row {
+            display: flex;
+            justify-content: space-between;
+            margin: 8px 0;
+            font-size: 14px;
+        }
+
+        .year {
+            color: #e3f2fd;
+        }
+
+        .percentage {
+            font-weight: 600;
+        }
+
+        /* Color coding by year */
+        .row-2021 .percentage { color: #90caf9; }
+        .row-2022 .percentage { color: #64b5f6; }
+        .row-2023 .percentage { color: #42a5f5; }
+        .row-2024 .percentage { color: #2196f3; }
+        .row-2025 .percentage { color: #1976d2; }
+
+        .projection {
+            font-size: 11px;
+            color: #bbdefb;
+            margin-left: 5px;
+            font-style: italic;
+        }
+
+        /* Apple leaf */
+        .leaf {
+            position: absolute;
+            top: -45px;
+            left: 50%;
+            width: 40px;
+            height: 30px;
+            background-color: #81d4fa;
+            border-radius: 50% 0 50% 0;
+            transform: rotate(-25deg);
+            transform-origin: bottom right;
+            animation: 
+                leafWave 2s ease-in-out infinite alternate,
+                leafBounce 2.5s ease infinite;
+        }
+
+        /* Animations */
+        @keyframes bounce {
+            0%, 100% { transform: scale(1, 1) translateY(0); }
+            10% { transform: scale(1.1, 0.9) translateY(0); }
+            30% { transform: scale(0.9, 1.1) translateY(-15px); }
+            50% { transform: scale(1.05, 0.95) translateY(0); }
+            55% { transform: scale(1, 1) translateY(0); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(2deg); }
+        }
+
+        @keyframes stemBounce {
+            0%, 100% { transform: translateX(-50%) scaleY(1); }
+            30% { transform: translateX(-50%) scaleY(0.8); }
+            50% { transform: translateX(-50%) scaleY(1.2); }
+        }
+
+        @keyframes leafBounce {
+            0%, 100% { top: -45px; }
+            30% { top: -40px; }
+            50% { top: -50px; }
+        }
+
+        @keyframes leafWave {
+            0% { transform: rotate(-25deg); }
+            100% { transform: rotate(-30deg); }
+        }
+
+        @keyframes dataPulse {
+            0%, 100% { transform: scale(1); }
+            30% { transform: scale(1.03); }
+            50% { transform: scale(0.98); }
+        }
+
+        @keyframes textBounce {
             0%, 100% { transform: translateY(0); }
             30% { transform: translateY(-3px); }
             50% { transform: translateY(1px); }
-        }
-        
-        .subtitle {
-            font-size: 14px;
-            margin-bottom: 15px;
-            color: #c4dbff;
-        }
-        
-        .growth-item {
-            display: flex;
-            justify-content: space-between;
-            margin: 10px 0;
-            font-size: 15px;
-            align-items: baseline;
-        }
-        
-        .year {
-            color: #e6f0ff;
-            flex: 1;
-        }
-        
-        .percentage {
-            font-weight: 600;
-            min-width: 60px;
-            text-align: right;
-        }
-        
-        .year-2021 .percentage { color: #a8ceff; }
-        .year-2022 .percentage { color: #7eb6ff; }
-        .year-2023 .percentage { color: #4b90ff; }
-        .year-2024 .percentage { color: #2673e6; }
-        .year-2025 .percentage { color: #1a5cb8; }
-        
-        .projection {
-            font-size: 12px;
-            color: #c4dbff;
-            margin-left: 5px;
-            font-style: italic;
         }
     </style>
 </head>
 <body>
     <div class="apple-container">
-        <div class="apple-leaf"></div>
+        <div class="leaf"></div>
         <div class="apple-shape">
             <div class="title">Enrollment Growth</div>
             <div class="subtitle">Provider Requests</div>
             <div class="apple-data">
-                <div class="growth-item year-2021">
+                <div class="data-row row-2021">
                     <span class="year">2021-2022</span>
                     <span class="percentage">+50%</span>
                 </div>
-                <div class="growth-item year-2022">
+                <div class="data-row row-2022">
                     <span class="year">2022-2023</span>
                     <span class="percentage">+16%</span>
                 </div>
-                <div class="growth-item year-2023">
+                <div class="data-row row-2023">
                     <span class="year">2023-2024</span>
                     <span class="percentage">+23%</span>
                 </div>
-                <div class="growth-item year-2024">
+                <div class="data-row row-2024">
                     <span class="year">2024-2025</span>
-                    <span class="percentage">+23%</span>
-                    <span class="projection">(Projected)</span>
+                    <span class="percentage">+23% <span class="projection">(projected)</span></span>
                 </div>
-                <div class="growth-item year-2025">
+                <div class="data-row row-2025">
                     <span class="year">2025-2026</span>
-                    <span class="percentage">+16%</span>
-                    <span class="projection">(Projected)</span>
+                    <span class="percentage">+16% <span class="projection">(projected)</span></span>
                 </div>
             </div>
         </div>
